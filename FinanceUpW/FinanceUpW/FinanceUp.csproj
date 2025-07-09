@@ -46,24 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmCorte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmCorte.Designer.cs">
-      <DependentUpon>FrmCorte.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmEgresos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmEgresos.Designer.cs">
-      <DependentUpon>FrmEgresos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmIngresos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmIngresos.Designer.cs">
-      <DependentUpon>FrmIngresos.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,25 +58,43 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmReportes.cs">
+    <Compile Include="FrmRegistrarEgreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmReportes.Designer.cs">
-      <DependentUpon>FrmReportes.cs</DependentUpon>
+    <Compile Include="FrmRegistrarEgreso.Designer.cs">
+      <DependentUpon>FrmRegistrarEgreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTipos.cs">
+    <Compile Include="FrmRegistrarIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTipos.Designer.cs">
-      <DependentUpon>FrmTipos.cs</DependentUpon>
+    <Compile Include="FrmRegistrarIngreso.Designer.cs">
+      <DependentUpon>FrmRegistrarIngreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTransacciones.cs">
+    <Compile Include="FrmTiposEgresos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTransacciones.Designer.cs">
-      <DependentUpon>FrmTransacciones.cs</DependentUpon>
+    <Compile Include="FrmTiposEgresos.Designer.cs">
+      <DependentUpon>FrmTiposEgresos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTiposIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTiposIngresos.Designer.cs">
+      <DependentUpon>FrmTiposIngresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTiposPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTiposPago.Designer.cs">
+      <DependentUpon>FrmTiposPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalData.cs" />
     <Compile Include="MainForm.cs" />
+    <Compile Include="Models\Egreso.cs" />
+    <Compile Include="Models\Ingreso.cs" />
+    <Compile Include="Models\TipoEgreso.cs" />
+    <Compile Include="Models\TipoIngreso.cs" />
+    <Compile Include="Models\TipoPago.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterForm.cs">
@@ -103,14 +103,23 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FrmIngresos.resx">
-      <DependentUpon>FrmIngresos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegistrarEgreso.resx">
+      <DependentUpon>FrmRegistrarEgreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTiposEgresos.resx">
+      <DependentUpon>FrmTiposEgresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTiposIngresos.resx">
+      <DependentUpon>FrmTiposIngresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTiposPago.resx">
+      <DependentUpon>FrmTiposPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

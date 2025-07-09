@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FinanceUpW
 {
-    public partial class FrmReportes : Form
+    public partial class FrmRegistrarEgreso : Form
     {
-        public FrmReportes()
+        public FrmRegistrarEgreso()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

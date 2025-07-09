@@ -25,9 +25,9 @@ namespace FinanceUpW
             InitializeComponent();
             _username = username;
 
-            // configure the label
+            // Display the passed username
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Text = $"Welcome, {_username}!";
+            lblWelcome.Text = $"Bienvenido, {_username}!";
             //lblWelcome.Location = new Point(10, 10); // Set position on the form
             lblWelcome.AutoSize = true;
 
@@ -35,13 +35,48 @@ namespace FinanceUpW
             this.Controls.Add(lblWelcome);
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
+       
+
+        private void lblWelcome_Click(object sender, EventArgs e)
         {
-            // Use the passed username (e.g., display it)
-            lblWelcome.Text = $"Welcome, {_username}!";
+
         }
 
-       
-    }
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnTiposIngresos_Click(object sender, EventArgs e)
+        {
+            FrmTiposIngresos formulario = new FrmTiposIngresos();
+            formulario.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                FrmTiposEgresos formulario = new FrmTiposEgresos();
+                formulario.ShowDialog();   
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmTiposPago formulario = new FrmTiposPago();
+            formulario.ShowDialog();
+        }
+
+        private void btnRegistroIngreso_Click(object sender, EventArgs e)
+        {
+
+            FrmRegistrarIngreso formulario = new FrmRegistrarIngreso();
+            formulario.ShowDialog();
+        }
+
+        private void btnRegistrarEgreso_Click(object sender, EventArgs e)
+        {
+            
+            FrmRegistrarEgreso formulario = new FrmRegistrarEgreso();
+            formulario.ShowDialog();
+        }
+    }   
 }

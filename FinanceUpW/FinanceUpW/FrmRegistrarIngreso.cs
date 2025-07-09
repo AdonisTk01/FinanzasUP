@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FinanceUpW
 {
-    public partial class FrmTransacciones : Form
+    public partial class FrmRegistrarIngreso : Form
     {
-        public FrmTransacciones()
+        public FrmRegistrarIngreso()
         {
             InitializeComponent();
         }
