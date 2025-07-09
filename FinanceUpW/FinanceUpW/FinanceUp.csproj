@@ -112,6 +112,9 @@
     <EmbeddedResource Include="FrmRegistrarEgreso.resx">
       <DependentUpon>FrmRegistrarEgreso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegistrarIngreso.resx">
+      <DependentUpon>FrmRegistrarIngreso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTiposEgresos.resx">
       <DependentUpon>FrmTiposEgresos.cs</DependentUpon>
     </EmbeddedResource>
