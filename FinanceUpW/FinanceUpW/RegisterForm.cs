@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace FinanceUpW
 {
     public partial class RegisterForm: Form
     {
+
+        private string connectionString = "Server=DESKTOP-T2EC9OV\\TEW_SQLEXPRESS;Database=FinanceUpDB;Trusted_Connection=True;";
         public RegisterForm()
         {
             InitializeComponent();
@@ -24,24 +27,50 @@ namespace FinanceUpW
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string newUser = txtNewUser.Text.Trim();
-            string newPassword = txtNewPassword.Text.Trim();
+            string nombre = txtName.Text.Trim();
+            string usuario = txtUser.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string rol = "Usuario"; // Por defecto, si no es admin
 
-            if (string.IsNullOrEmpty(newUser) || string.IsNullOrEmpty(newPassword))
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Por favor ingresa usuario y contraseña.");
+                MessageBox.Show("Todos los campos son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (LoginForm.RegisteredUsers.ContainsKey(newUser))
+            if (LoginForm.RegisteredUsers.ContainsKey(usuario))
             {
                 MessageBox.Show("El usuario ya existe.");
                 return;
             }
 
-            LoginForm.RegisteredUsers.Add(newUser, newPassword);
-            MessageBox.Show("Usuario registrado exitosamente.");
-            this.Close();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Insertar nuevo usuario
+                    string query = "INSERT INTO Usuarios (Nombre, Usuario, Password, Rol) VALUES (@nombre, @usuario, @password, @rol)";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+                        cmd.Parameters.AddWithValue("@usuario", usuario);
+                        cmd.Parameters.AddWithValue("@password", password); // ⚠ Lo ideal sería encriptar
+                        cmd.Parameters.AddWithValue("@rol", rol);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Usuario registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
+

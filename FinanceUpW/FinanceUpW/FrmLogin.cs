@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,11 +46,50 @@ namespace FinanceUpW
                 return;
             }
 
+
             // Here you would typically check the credentials against a database or other storage
+            string connectionString = "Server=DESKTOP-T2EC9OV\\TEW_SQLEXPRESS;Database=FinanceUpDB;Integrated Security=True;";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
 
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT Id, Nombre, Rol FROM Usuarios WHERE Usuario=@Usuario AND Password=@Password";
 
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Usuario", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            // Guardar info del usuario logeado
+                            int userId = reader.GetInt32(0);
+                            string nombre = reader.GetString(1);
+                            string rol = reader.GetString(2);
+
+                            MessageBox.Show($"Bienvenido {nombre}");
+
+                            // Abrir MainForm y pasar datos del usuario
+                            FrmMain mainForm = new FrmMain(username);
+                            mainForm.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuario o contraseña incorrectos.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al iniciar sesión: " + ex.Message);
+                }
+            }
             //////////*************
-
+/*
             if (RegisteredUsers.ContainsKey(username) && RegisteredUsers[username] == password)
             {
                 MessageBox.Show("Login successful!");
@@ -62,7 +102,7 @@ namespace FinanceUpW
                 MessageBox.Show("Invalid username or password.");
             }
 
-
+            */
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
